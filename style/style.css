@@ -1,0 +1,70 @@
+body {
+  padding: 20px;
+}
+.hero {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url(../imgaes/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+.logo-wrapper {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+}
+.logo {
+  height: 35px;
+}
+.contents {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.title {
+  display: block;
+  font-size: 3.8em;
+  font-weight: 400;
+  letter-spacing: 2rem;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  margin-bottom: 20px;
+}
+.sub {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 800;
+  letter-spacing: 1.2rem;
+  animation: moveInRight 1s ease-out;
+}
+
+/* Button Hero */
+.btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.2rem 2.5rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+  margin-top: 7em;
+}
