@@ -1,70 +1,504 @@
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
 body {
-  padding: 20px;
-}
-.hero {
-  height: 95vh;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 133, 0.8)
-    ),
-    url(../imgaes/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
-.logo-wrapper {
-  position: absolute;
-  top: 2.5rem;
-  left: 2.5rem;
-}
-.logo {
-  height: 35px;
-}
-.contents {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-}
-
-.title {
-  display: block;
-  font-size: 3.8em;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
-  letter-spacing: 2rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  margin-bottom: 20px;
-}
-.sub {
-  display: block;
-  font-size: 1.2em;
-  font-weight: 800;
-  letter-spacing: 1.2rem;
-  animation: moveInRight 1s ease-out;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  padding: 3rem;
 }
 
-/* Button Hero */
-.btn {
-  text-transform: uppercase;
+main,
+section {
+  display: block;
+}
+
+a {
   text-decoration: none;
-  padding: 1.2rem 2.5rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all 0.2s;
+  color: inherit;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+:root {
+  --primary: rgba(247, 247, 247, 1);
+  --secondary: rgba(51, 51, 51, 1);
+  --green: rgba(40, 180, 133, 0.8);
+  --green-light: rgba(126, 213, 111, 0.8);
+  --green-content: rgb(85, 197, 122);
+  --text-primary: rgba(119, 119, 119, 1);
+  --text-secondary: rgba(255, 255, 255, 1);
+}
+
+/* Hamburger */
+
+.hamburger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.ham-checkbox {
+  display: none;
+}
+
+.ham-icon {
   position: relative;
-  font-size: 1rem;
-  border: none;
+  margin-top: 3.5rem;
+}
+
+.ham-icon,
+.ham-icon::before,
+.ham-icon::after {
+  display: inline-block;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--secondary);
+}
+
+.ham-icon::before,
+.ham-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.ham-icon::before {
+  top: -1rem;
+}
+
+.ham-icon::after {
+  top: 1rem;
+}
+
+.ham-btn {
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+  background-color: var(--primary);
+  color: var(--text-primary);
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  z-index: 2000;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  text-align: center;
   cursor: pointer;
 }
 
-.btn-white {
-  background-color: #fff;
-  color: #777;
-  margin-top: 7em;
+.ham-background {
+  position: fixed;
+  top: 6.5rem;
+  right: 6.5rem;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  background-image: radial-gradient(#7ed56f, #28b485);
+  z-index: 1000;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.hamburger-ham {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+  opacity: 0;
+  width: 0;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.ham-list {
+  list-style: none;
+  text-align: center;
+  width: 100%;
+}
+
+.ham-item {
+  margin: 1rem;
+}
+
+.ham-link {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    var(--primary) 50%
+  );
+  background-size: 220%;
+  transition: all 0.4s ease-in-out;
+}
+
+.ham-link:hover,
+.ham-link:active {
+  background-position: 100%;
+  color: var(--text-primary);
+  transform: translateX(1rem);
+}
+
+.ham-checkbox:checked ~ .ham-background {
+  transform: scale(80);
+}
+
+.ham-checkbox:checked ~ .hamburger-ham {
+  opacity: 1;
+  width: 100%;
+}
+
+.ham-checkbox:checked ~ .ham-btn .ham-icon {
+  background-color: transparent;
+}
+
+.ham-checkbox:checked ~ .ham-btn .ham-icon::before {
+  top: 0rem;
+  transform: rotate(135deg);
+}
+
+.ham-checkbox:checked ~ .ham-btn .ham-icon::after {
+  top: 0rem;
+  transform: rotate(-135deg);
+}
+
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: 1.5rem 4rem;
+  border: none;
+  font-size: 1.6rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-primary);
+}
+
+.btn-text {
+  background-color: transparent;
+  color: var(--green-content);
+  padding: 0.4rem 4px;
+  border-radius: 0;
+  text-transform: none;
+  border-bottom: #28b485 1px solid;
+}
+
+.btn-text:hover {
+  background-color: var(--green);
+  color: var(--text-secondary);
+}
+
+.btn-animated {
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-primary::after {
+  background-color: var(--primary);
+}
+
+.title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.contents {
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.section-header {
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 6rem;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #7ed56f, 70%, #28b485);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.section-header:hover {
+  transform: skewY(2deg) skewX(15deg) scale(1.1);
+  text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.row {
+  max-width: 100rem;
+  margin: 0 auto;
+
+  @media (max-width: 56.25rem) {
+    padding: 0 3rem;
+    max-width: 50rem;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95dvh;
+  background-image: linear-gradient(
+      to right bottom,
+      var(--green-light),
+      var(--green)
+    ),
+    url("../imgaes/hero.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-wrapper {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header-logo {
+  height: 3.5rem;
+}
+
+.header-heading {
+  text-align: center;
+  margin-bottom: 14rem;
+}
+
+.header-heading-primary {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 10rem;
+}
+
+.title-header {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+.subtitle {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  animation: moveInRight 1s ease-out;
+}
+
+.about {
+  background-color: var(--primary);
+  padding: 25rem 0;
+  margin-top: -20vh;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+  grid-gap: 6rem;
+  justify-items: center;
+}
+
+.about-left {
+  width: 100%;
+}
+
+.about-right {
+  width: 100%;
+  position: relative;
+}
+
+.about-img {
+  position: absolute;
+  width: 55%;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+  outline-offset: 2rem;
+}
+
+.about-img-1 {
+  top: -2rem;
+  left: 0;
+  z-index: 10;
+}
+
+.about-img-2 {
+  top: 3rem;
+  left: 50%;
+  z-index: 10;
+}
+
+.about-img-3 {
+  top: 20%;
+  left: 20%;
+  z-index: 10;
+}
+
+.about-img:hover {
+  transform: scale(1.1);
+  z-index: 100;
+  outline: 1rem solid #7ed56f;
+  border-radius: 1rem;
+}
+
+.section-features {
+  margin-top: -20vh;
+  display: flex;
+  background-image: linear-gradient(
+      to right bottom,
+      var(--green-light),
+      var(--green)
+    ),
+    url("../imgaes//nat-4.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  transform: skewY(-7deg);
+  padding: 20rem 0;
+}
+
+.section-features .row {
+  transform: skewY(7deg);
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
+  padding: 4rem 2rem 1rem 2rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.icon-card {
+  font-size: 6rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(to right, #7ed56f, #28b485);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-tours {
+  background-color: var(--primary);
+  padding-top: 25rem;
+  margin-top: -20vh;
+}
+
+.section-tours .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 6rem;
+}
+
+/* Animations */
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
