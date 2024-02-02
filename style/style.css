@@ -1,33 +1,7 @@
-html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-primary);
-  padding: 3rem;
-}
-
-main,
-section {
-  display: block;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-*,
-*::before,
-*::after {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  min-width: 0;
 }
 
 :root {
@@ -37,17 +11,35 @@ a {
   --green-light: rgba(126, 213, 111, 0.8);
   --green-content: rgb(85, 197, 122);
   --text-primary: rgba(119, 119, 119, 1);
-  --text-secondary: rgba(255, 255, 255, 1);
+  --text-white: rgba(255, 255, 255, 1);
+}
+
+html {
+  font-size: 60%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  padding: 3rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Hamburger */
 
 .hamburger {
-  position: fixed;
-  top: 0;
+  /* position: fixed; */
+  /* top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1000; */
 }
 
 .ham-checkbox {
@@ -140,7 +132,7 @@ a {
   font-size: 3rem;
   font-weight: 300;
   padding: 1rem 2rem;
-  color: var(--text-secondary);
+  color: var(--text-white);
   text-decoration: none;
   text-transform: uppercase;
   background-image: linear-gradient(
@@ -212,7 +204,7 @@ a {
 
 .btn-text:hover {
   background-color: var(--green);
-  color: var(--text-secondary);
+  color: var(--text-white);
 }
 
 .btn-animated {
@@ -323,7 +315,7 @@ a {
 }
 
 .header-heading-primary {
-  color: var(--text-secondary);
+  color: var(--text-white);
   text-transform: uppercase;
   backface-visibility: hidden;
   margin-bottom: 10rem;
