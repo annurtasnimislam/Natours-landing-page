@@ -7,40 +7,47 @@
       href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="/style/icon-font.css" />
     <link rel="stylesheet" href="/style/style.css" />
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+
     <title>Natours</title>
   </head>
   <body>
     <div>
-      <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
-      <label for="navi-toggle" class="navigation__button">
-        <span class="navigation__icon">&nbsp;</span>
+      <input type="checkbox" class="checkbox" id="toggle" />
+      <label for="toggle" class="toggle-button">
+        <span class="toggle-icon" id="toggle-icon">
+          <i class="fa-solid fa-bars"></i>
+        </span>
       </label>
-      <div class="navigation__background"></div>
-      <nav class="navigation__nav">
-        <ul class="navigation__list">
-          <li class="navigation__item">
-            <a href="#" class="navigation__link"
+      <div class="background"></div>
+      <nav class="hamburger">
+        <ul class="hamburger-list">
+          <li class="hamburger__item">
+            <a href="#" class="hamburger__link"
               ><span>01 </span>About Natours</a
             >
           </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link"
+          <li class="hamburger__item">
+            <a href="#" class="hamburger__link"
               ><span>02 </span>Your Benefits</a
             >
           </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link"
+          <li class="hamburger__item">
+            <a href="#" class="hamburger__link"
               ><span>03 </span>Popular Tours</a
             >
           </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link"><span>04 </span>Stories</a>
+          <li class="hamburger__item">
+            <a href="#" class="hamburger__link"><span>04 </span>Stories</a>
           </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link"><span>05 </span>Book Now</a>
+          <li class="hamburger__item">
+            <a href="#" class="hamburger__link"><span>05 </span>Book Now</a>
           </li>
         </ul>
       </nav>
@@ -484,5 +491,6 @@
         </div>
       </div>
     </div>
+    <script src="js/main.js"></script>
   </body>
 </html>
