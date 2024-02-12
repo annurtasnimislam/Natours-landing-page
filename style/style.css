@@ -64,7 +64,7 @@ body {
   height: 6rem;
   width: 6rem;
   border-radius: 50%;
-  position: fixed;
+  position: absolute;
   top: 6.5rem;
   right: 6.5rem;
   background-image: radial-gradient(var(--green), var(--dark-green));
