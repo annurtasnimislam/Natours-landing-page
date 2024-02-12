@@ -94,13 +94,15 @@ body {
   opacity: 0;
   width: 0;
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .hamburger-list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   list-style: none;
   text-align: center;
+  width: 100%;
 }
 .hamburger__item {
   margin: 1rem;
@@ -155,7 +157,7 @@ body {
   font-size: 3.5rem;
   text-transform: uppercase;
   font-weight: 700;
-  /* display: inline-block; */
+  display: inline-block;
   color: transparent;
   background: linear-gradient(to right, var(--green), var(--dark-green));
   background-clip: text;
@@ -1058,6 +1060,9 @@ body {
   }
   body {
     padding: 0;
+  }
+  .hamburger-list {
+    left: 13%;
   }
   .row:not(:last-child) {
     margin-bottom: 8rem;
