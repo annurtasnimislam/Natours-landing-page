@@ -57,7 +57,7 @@ body {
 .toggle-icon {
   font-size: 28px;
   color: #5a5a5a;
-  transition: 40ms;
+  transition: 80ms;
 }
 
 .background {
@@ -73,7 +73,7 @@ body {
   transition: transform 0.8s;
 }
 .checkbox:checked + .toggle-button .toggle-icon {
-  transition: transform 40ms;
+  transition: transform 80ms;
   transform: rotate(90deg);
 }
 .checkbox:checked ~ .background {
